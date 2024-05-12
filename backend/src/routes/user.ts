@@ -2,19 +2,19 @@ import express , { Router } from 'express'
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 const router:Router = express.Router();
-import zod, { Schema } from 'zod'
-import jwt from 'jsonwebtoken'
-import { userInfo } from 'os';
+import zod from 'zod'
+
+
 
 const signupBody:any = zod.object({
     username: zod.string().email(),
-    password: zod.string().min(6),
     firstName: zod.string(),
-    lastName: zod.string()
+    lastName: zod.string(),
+    password: zod.string()
 })
 
 router.post('/signup', async(req,res) => {
-    const success = signupBody.safeParse(req.body);
+    const { success } = signupBody.safeParse(req.body);
     if(!success) {
         return res.status(411).json({
             msg: "Incorrect Input"
