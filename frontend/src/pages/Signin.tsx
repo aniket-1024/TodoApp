@@ -19,7 +19,7 @@ export const Signin = ()=>{
             <InputBox Label={"Username"} placeholder={"email"} onChange={(e:any) => {setUsername(e.target.value)}}/>
             <InputBox Label={"Password"} placeholder={"******"} onChange={(e:any) => {setPassword(e.target.value)}}/>
             <Button label={"Sign In"} onClick={async() => {
-                const response = await axios.post("http://localhost:3000/api/v1/user/signin" , {
+                let response = await axios.post("http://localhost:3000/api/v1/user/signin" , {
                     username,
                     password
                 })

@@ -9,15 +9,18 @@ export default {
     extend: {
       backgroundImage: {
         'hero': "url('./src/assets/bg.jpg')",
+        'herod': "url('./src/assets/dashboard.jpg')"
       },
     },
     colors: {
       gray: {
         DEFAULT: '#333333',
         dark: '#444444',
+        t: '#a16207'
       },
       white:{
         DEFAULT: '#DBDBDB',
+        dashbaord: '#F0EAE2'
 
       },
       yellow:{

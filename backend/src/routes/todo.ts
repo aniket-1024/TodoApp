@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 import { title } from 'process';
 const router:Router = express.Router();
 
-router.get("/get", async(req,res) => {
+router.post("/get", async(req,res) => {
     const result = await prisma.todo.findMany({
         where: {
             userId: req.body.userId

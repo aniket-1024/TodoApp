@@ -48,7 +48,7 @@ router.post('/signup', async(req,res) => {
 
 const singinBody:any = zod.object({
     username: zod.string().email(),
-    password: zod.string().min(6)
+    password: zod.string()
 })
 
 router.post("/signin", async(req,res) => {
@@ -82,4 +82,20 @@ router.post("/signin", async(req,res) => {
 
 })
 
+router.post("/getuser", async(req,res) => {
+    const response = await prisma.user.findUnique({
+        where: {
+            id: req.body.id
+        },
+        select: {
+            firstName: true
+        }
+    })
+
+    if(response?.firstName) {
+        return res.json({
+            "firstName": response?.firstName
+        })
+    }
+})
 export default router;
